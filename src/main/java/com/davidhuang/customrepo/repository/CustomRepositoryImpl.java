@@ -1,7 +1,7 @@
 package com.davidhuang.customrepo.repository;
 
 import com.davidhuang.customrepo.models.BaseModel;
-import org.springframework.core.GenericTypeResolver;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,6 +30,16 @@ public class CustomRepositoryImpl <T extends BaseModel, ID> implements CustomRep
         Collections.sort(listOfT);
 
         return listOfT;
+    }
+
+    @Override
+    @Transactional
+    public void appendWithA(Class cls, Object id) {
+        Object o = entityManager.find(cls,id);
+        if (o instanceof BaseModel) {
+            ((BaseModel) o).setName(((BaseModel) o).getName().concat("A"));
+            entityManager.persist(o);
+        }
     }
 
 }

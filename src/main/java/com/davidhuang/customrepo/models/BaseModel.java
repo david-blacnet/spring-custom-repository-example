@@ -3,6 +3,9 @@ package com.davidhuang.customrepo.models;
 public abstract class BaseModel implements Comparable<BaseModel> {
     public abstract Long getId();
 
+    public abstract String getName();
+    public abstract void setName(String name);
+
     @Override
     public String toString() {
         return String.format("Test[id=%d]", getId());
