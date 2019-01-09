@@ -1,5 +1,8 @@
 package com.davidhuang.customrepo.repository;
 
+import com.davidhuang.customrepo.models.BaseModel;
+import org.springframework.core.GenericTypeResolver;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -9,7 +12,7 @@ import javax.persistence.criteria.Root;
 import java.util.Collections;
 import java.util.List;
 
-public class CustomRepositoryImpl <T extends Comparable<T>,ID> implements CustomRepository {
+public class CustomRepositoryImpl <T extends BaseModel, ID> implements CustomRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

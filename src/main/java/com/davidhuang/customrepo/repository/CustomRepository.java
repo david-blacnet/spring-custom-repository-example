@@ -1,10 +1,10 @@
 package com.davidhuang.customrepo.repository;
 
-import com.davidhuang.customrepo.models.Test;
+import com.davidhuang.customrepo.models.BaseModel;
 
 import java.util.List;
 
-public interface CustomRepository<T extends Test, ID> {
+public interface CustomRepository<T extends BaseModel, ID> {
 
     List<T> findAllAndSort(Class<T> cls);
 
